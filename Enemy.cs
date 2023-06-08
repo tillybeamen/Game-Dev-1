@@ -11,7 +11,7 @@ public class Enemy
         AttackList = attackList;
     }
 
-    public void RandomAttack()
+    public void RandomAttack(List<Attack> AttackList)
     {
 
         Random rand = new Random();
@@ -19,6 +19,14 @@ public class Enemy
         System.Console.WriteLine($"{AttackList[entropy].Name}");
 
         // System.Console.WriteLine();
+    }
+
+    public void PerformAttack(Enemy Target, Attack ChosenAttack)
+    {
+        Target.Health = Target.Health - ChosenAttack.DamageAmount;
+        // Write some logic here to reduce the Targets health by your
+        // attacks dmg amount
+        System.Console.WriteLine($"{Name} attacks {Target.Name}, dealing {ChosenAttack.DamageAmount} damage and reducing {Target.Name}'s health to {Target.Health}!!");
     }
 
     public virtual void ShowInfo()
